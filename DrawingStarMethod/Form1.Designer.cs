@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.drawButton = new System.Windows.Forms.Button();
             this.xLabel = new System.Windows.Forms.Label();
@@ -37,6 +38,7 @@
             this.yInput = new System.Windows.Forms.TextBox();
             this.sizeInput = new System.Windows.Forms.TextBox();
             this.fillButton = new System.Windows.Forms.Button();
+            this.DrawEr = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // drawButton
@@ -54,7 +56,7 @@
             this.xLabel.AutoSize = true;
             this.xLabel.Location = new System.Drawing.Point(261, 10);
             this.xLabel.Name = "xLabel";
-            this.xLabel.Size = new System.Drawing.Size(15, 15);
+            this.xLabel.Size = new System.Drawing.Size(15, 16);
             this.xLabel.TabIndex = 1;
             this.xLabel.Text = "X";
             // 
@@ -63,7 +65,7 @@
             this.yLabel.AutoSize = true;
             this.yLabel.Location = new System.Drawing.Point(261, 37);
             this.yLabel.Name = "yLabel";
-            this.yLabel.Size = new System.Drawing.Size(14, 15);
+            this.yLabel.Size = new System.Drawing.Size(16, 16);
             this.yLabel.TabIndex = 2;
             this.yLabel.Text = "Y";
             // 
@@ -72,7 +74,7 @@
             this.sizeLabel.AutoSize = true;
             this.sizeLabel.Location = new System.Drawing.Point(183, 63);
             this.sizeLabel.Name = "sizeLabel";
-            this.sizeLabel.Size = new System.Drawing.Size(109, 15);
+            this.sizeLabel.Size = new System.Drawing.Size(117, 16);
             this.sizeLabel.TabIndex = 3;
             this.sizeLabel.Text = "Size (pixel square)";
             // 
@@ -80,21 +82,21 @@
             // 
             this.xInput.Location = new System.Drawing.Point(283, 7);
             this.xInput.Name = "xInput";
-            this.xInput.Size = new System.Drawing.Size(71, 20);
+            this.xInput.Size = new System.Drawing.Size(71, 22);
             this.xInput.TabIndex = 4;
             // 
             // yInput
             // 
             this.yInput.Location = new System.Drawing.Point(283, 34);
             this.yInput.Name = "yInput";
-            this.yInput.Size = new System.Drawing.Size(71, 20);
+            this.yInput.Size = new System.Drawing.Size(71, 22);
             this.yInput.TabIndex = 5;
             // 
             // sizeInput
             // 
             this.sizeInput.Location = new System.Drawing.Point(283, 60);
             this.sizeInput.Name = "sizeInput";
-            this.sizeInput.Size = new System.Drawing.Size(71, 20);
+            this.sizeInput.Size = new System.Drawing.Size(71, 22);
             this.sizeInput.TabIndex = 6;
             // 
             // fillButton
@@ -106,6 +108,11 @@
             this.fillButton.Text = "Fill";
             this.fillButton.UseVisualStyleBackColor = true;
             this.fillButton.Click += new System.EventHandler(this.fillButton_Click);
+            // 
+            // DrawEr
+            // 
+            this.DrawEr.Interval = 20;
+            this.DrawEr.Tick += new System.EventHandler(this.DrawEr_Tick);
             // 
             // Form1
             // 
@@ -121,10 +128,12 @@
             this.Controls.Add(this.yLabel);
             this.Controls.Add(this.xLabel);
             this.Controls.Add(this.drawButton);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DrawStar";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,6 +149,7 @@
         private System.Windows.Forms.TextBox yInput;
         private System.Windows.Forms.TextBox sizeInput;
         private System.Windows.Forms.Button fillButton;
+        private System.Windows.Forms.Timer DrawEr;
     }
 }
 
